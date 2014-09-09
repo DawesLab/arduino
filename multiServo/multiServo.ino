@@ -24,8 +24,14 @@ void serviceSerial()
     char ch = Serial.read();
     
     if( isDigit(ch) )
-      pos = pos * 10 + ch - '0';
-    else if(ch >= 'a' && ch <= 'a'+ SERVOS)
-      myservo[ch - 'a'].write(pos);
+      pos = (pos * 10) + (ch - '0');
+    else if(ch == 'a') {
+      myservo[0].write(pos);
+      Serial.print("on channel ");
+      Serial.print(ch - 'a');
+      Serial.print(" going to: ");
+      Serial.println(pos);
+      pos = 0;
+    }
   }
 }
