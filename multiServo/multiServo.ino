@@ -27,11 +27,10 @@ void serviceSerial()
     if( isDigit(ch) )
       pos = (pos * 10) + (ch - '0');
     else if(ch == 'a') {
-      //set control pin high
       digitalWrite(6,HIGH);
       myservo[0].write(pos);
+      delay(500);
       digitalWrite(6, LOW);
-      //set control pin low
       Serial.print("on channel ");
       Serial.print(ch - 'a');
       Serial.print(" going to: ");
